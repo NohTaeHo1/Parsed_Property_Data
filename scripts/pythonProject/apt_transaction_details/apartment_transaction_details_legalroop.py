@@ -9,7 +9,7 @@ load_dotenv()
 
 # 서울로 한정된
 os.chdir('C:/Users/N/Projects/dataset')
-df = pd.read_csv('data/processed/legal_info_b_seoul.csv')
+df = pd.read_csv('data/preprocessed/legal_info_b_seoul.csv')
 
 # 생성한 법정동코드 중복제거
 LAWD_CD_list = df['법정동시군구코드'].unique()

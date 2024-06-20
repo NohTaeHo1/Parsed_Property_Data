@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 os.chdir('C:/Users/N/Projects/dataset')
-df = pd.read_csv('data/processed/legal_info_b_seoul.csv')
+df = pd.read_csv('data/preprocessed/legal_info_b_seoul.csv')
 
 LAWD_CD_list = df['법정동시군구코드'].unique()
 
@@ -31,7 +31,7 @@ column_nm = ['갱신요구권사용', '건축년도', '계약구분', '계약기
 #     f.write(soup.prettify())
 
 
-dear_ymd = 202300
+dear_ymd = 202000
 
 
 for k in range(12):

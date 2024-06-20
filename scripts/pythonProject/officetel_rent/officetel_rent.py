@@ -7,15 +7,15 @@ from dotenv import load_dotenv
 load_dotenv()
 
 os.chdir('C:/Users/N/Projects/dataset')
-df = pd.read_csv('data/processed/legal_info_b_seoul.csv')
+df = pd.read_csv('data/preprocessed/legal_info_b_seoul.csv')
 
 LAWD_CD_list = df['법정동시군구코드'].unique()
 
 api_key = os.getenv('API_KEY')
 
-column_nm = ['거래금액', '거래유형', '건축년도', '년', '단지', '매도자', '매수자',
-             '법정동', '시군구', '월세금액', '월', '일', '전용면적', '중개사소재지',
-             '지번', '지역코드', '층']
+column_nm = ['갱신요구권사용', '건축년도', '계약구분', '계약기간', '년', '단지', '법정동',
+             '보증금', '시군구', '월', '월세', '일', '전용면적', '종전계약보증금',
+             '종전계약월세', '지번', '지역코드', '층']
 
 
 # # 처음 파일 확인할때 쓰는거
@@ -31,9 +31,9 @@ column_nm = ['거래금액', '거래유형', '건축년도', '년', '단지', '�
 #     f.write(soup.prettify())
 
 
-dear_ymd = 202000
+dear_ymd = 202400
 
-for k in range(12):
+for k in range(5):
     total = pd.DataFrame()
     dear_ymd += 1
 
@@ -61,7 +61,7 @@ for k in range(12):
         total.columns = column_nm
 
     # 데이터 파일로 저장
-    output_file = f'scripts/pythonProject/officetel_rent/parsed_data/officetel_trade_{dear_ymd}.csv'
+    output_file = f'scripts/pythonProject/officetel_rent/parsed_data/officetel_rent_{dear_ymd}.csv'
 
     total.to_csv(output_file, index=False)
     print(f'{output_file} 저장 완료')
